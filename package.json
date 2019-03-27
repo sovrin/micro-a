@@ -1,5 +1,5 @@
 {
-  "name": "micro-a",
+  "name": "micro-ap",
   "version": "0.1.0",
   "description": "tiny arg parser",
   "main": "index.js",
