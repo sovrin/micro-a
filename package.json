@@ -1,6 +1,6 @@
 {
   "name": "micro-a",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "tiny arg parser",
   "main": "index.js",
   "scripts": {
