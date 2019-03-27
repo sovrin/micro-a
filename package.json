@@ -1,0 +1,32 @@
+{
+  "name": "micro-a",
+  "version": "0.0.0",
+  "description": "tiny arg parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test --recursive",
+    "test:watch": "mocha test --watch --recursive",
+    "prepublish": "npm run test"
+  },
+  "author": {
+    "name": "Oleg Kamlowski",
+    "email": "n@sovrin.de"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sovrin/micro-a.git"
+  },
+  "keywords": [
+    "micro",
+    "router"
+  ],
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
+}
