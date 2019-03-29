@@ -26,7 +26,7 @@ Extract command arguments
 Returns the parsed arguments as an object
 
 # Examples
-```ecmascript 6
+```JavaScript
 const parser = require('micro-a');
 
 // simple
