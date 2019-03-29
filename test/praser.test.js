@@ -13,6 +13,34 @@ describe('micro-a', () => {
         });
     });
 
+    describe('test source input', () => {
+        const input = ['node.exe', 'index.js', 'foo', '-a'];
+
+        parser(input)
+            .command('foo')
+            .flag('a')
+            .get()
+        ;
+
+        it('should be equal after parsing', () => {
+            expect(input).to.deep.equal(input);
+        });
+    });
+
+    describe('get functions', () => {
+        const input = ['node.exe', 'index.js', 'foo', 'a'];
+
+        const p = parser(input)
+            .flag('a')
+            .command('foo')
+        ;
+
+        it('should return parser context', () => {
+            expect(p).to.deep.equal(p.flag('test'));
+        });
+    });
+
+
     describe('action arg without declaration', () => {
         const args = parser(['node.exe', 'index.js', 'install'])
             .get()
@@ -161,6 +189,52 @@ describe('micro-a', () => {
 
         it('should be object with "a":true, "b":true, "c":true', () => {
             expect(args).to.deep.equal({u: true, a: true, z: false});
+        });
+    });
+
+    describe('wrong flag usage', () => {
+        const args = parser(['node.exe', 'index.js', '-a', 'foo', '-a'])
+            .flag('a')
+            .get()
+        ;
+
+        it('should be singla a flag value', () => {
+            expect(args).to.deep.equal({a: 'foo'});
+        });
+    });
+
+    describe('wrong flag usage#2', () => {
+        const args = parser(['node.exe', 'index.js', '-a', '-a', 'foo'])
+            .flag('a')
+            .get()
+        ;
+
+        it('should be true', () => {
+            expect(args).to.deep.equal({a: true});
+        });
+    });
+
+    describe('flag literal', () => {
+        const args = parser(['node.exe', 'index.js', '-a', 'foo bar baz', '-b', 'honey badger'])
+            .flag('a')
+            .flag('b')
+            .get()
+        ;
+
+        it('should be whole string', () => {
+            expect(args).to.deep.equal({a: 'foo bar baz', b: 'honey badger'});
+        });
+    });
+
+    describe('flag literal with flag string', () => {
+        const args = parser(['node.exe', 'index.js', '-d', 'a', 'b', 'c', '-a', 'foo bar -b',])
+            .flag('d')
+            .flag('a')
+            .get()
+        ;
+
+        it('should be whole string', () => {
+            expect(args).to.deep.equal({a: 'foo bar -b', d: ['a', 'b', 'c']});
         });
     });
 });
