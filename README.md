@@ -25,9 +25,6 @@ Extract command arguments
 ## get()
 Returns the parsed arguments as an object
 
-# TODO
-* support literals with spaces
-
 # Examples
 ```ecmascript 6
 const parser = require('micro-a');
