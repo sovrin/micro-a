@@ -1,4 +1,4 @@
-<h1 align="left">micro-r</h1>
+<h1 align="left">micro-ap</h1>
 
 tiny arg parser
 
@@ -27,7 +27,7 @@ Returns the parsed arguments as an object
 
 # Examples
 ```JavaScript
-const parser = require('micro-a');
+const parser = require('micro-ap');
 
 // simple
 // node index.js install test --verbose
