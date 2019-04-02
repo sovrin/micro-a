@@ -6,7 +6,7 @@ tiny arg parser
 # Installation
 
 ```bash
-$ npm i micro-a
+$ npm i micro-ap
 ```
 
 # About
