@@ -13,14 +13,16 @@ $ npm i micro-ap
 micro-a is a small and opinionated argument parser library without any additional dependencies.
 
 # Functions
-## flag(flag, name)
+## flag(flag, name, deflt = false)
 Extract flag arguments
 * `flag` (string); one char as flag e.g. `-f`
 * `name` (string); full name of a flag e.g. `--file`
+* `deflt` (string); default value
 
-## command(name)
+## command(name, deflt = false)
 Extract command arguments
 * `name` (string); name of the command e.g. `install`
+* `deflt` (string); default value
 
 ## get()
 Returns the parsed arguments as an object
@@ -38,12 +40,12 @@ parser(process.argv)
 ;
 
 // complex
-// node index.js install foo -v -o console -f one.js two.js three.js -f four.js
+// node index.js install foo -o console -f one.js two.js three.js -f four.js
 parser(process.argv)
     .command('install')
     .flag('f', 'file')
     .flag('o', 'output')
-    .flag('v', 'verbose')
+    .flag('v', 'verbose', true)
     .get() // returns {"install": "test", "verbose": true, "output": "console", "file": ["one.js", "two.js", "three.js", "four.js"]}
 ;
 ```
