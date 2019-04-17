@@ -84,6 +84,17 @@ describe('micro-a', () => {
         });
     });
 
+    describe('command arg with several values and default val', () => {
+        const args = parser(['node.exe', 'index.js', 'foobar', 'foo', 'bar', '-a'])
+            .command('install', 'noinstall')
+            .get()
+        ;
+
+        it('should be object with install:["foo", "bar"]', () => {
+            expect(args).to.deep.equal({install: 'noinstall'});
+        });
+    });
+
     describe('command with 2 consecutive arguments and one single flag', () => {
         const args = parser(['node.exe', 'index.js', 'install', 'foo', 'bar', '-a'])
             .command('install')
@@ -189,6 +200,19 @@ describe('micro-a', () => {
 
         it('should be object with "a":true, "b":true, "c":true', () => {
             expect(args).to.deep.equal({u: true, a: true, z: false});
+        });
+    });
+
+    describe('several flags, use default value', () => {
+        const args = parser(['node.exe', 'index.js', '-c', '-b', '-u', '-a'])
+            .flag('u')
+            .flag('a')
+            .flag('z', 'zoosh', 'defaultVal')
+            .get()
+        ;
+
+        it('should be object with "a":true, "b":true, "c":true', () => {
+            expect(args).to.deep.equal({u: true, a: true, zoosh: 'defaultVal'});
         });
     });
 

@@ -1,6 +1,6 @@
 {
   "name": "micro-ap",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "tiny arg parser",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,6 @@
   ],
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.0.2"
+    "mocha": "^6.1.3"
   }
 }
