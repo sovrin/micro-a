@@ -27,6 +27,20 @@ describe('micro-a', () => {
         });
     });
 
+    describe('test truncate option', () => {
+        const input = ['foo', '-a'];
+
+        parser(input, false)
+            .command('foo')
+            .flag('a')
+            .get()
+        ;
+
+        it('should be equal after parsing', () => {
+            expect(input).to.deep.equal(input);
+        });
+    });
+
     describe('get functions', () => {
         const input = ['node.exe', 'index.js', 'foo', 'a'];
 
