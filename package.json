@@ -1,6 +1,6 @@
 {
   "name": "micro-ap",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "tiny arg parser",
   "main": "index.js",
   "scripts": {

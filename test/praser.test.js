@@ -275,5 +275,36 @@ describe('micro-a', () => {
             expect(args).to.deep.equal({a: 'foo bar -b', d: ['a', 'b', 'c']});
         });
     });
+
+    describe('command regexp', () => {
+        const input = ['node.exe', 'index.js', 'foo', 'bar', '-c', '-a'];
+
+        const args = parser(input)
+            .command(/[a-z]+/)
+            .flag('a')
+            .flag('b')
+            .flag('c')
+            .get()
+        ;
+
+        it('should get dynamic variable name', () => {
+            expect(args).to.deep.equal({foo: true, a: true, b: false, c: true});
+        });
+    });
+
+    describe('command add several regexp', () => {
+        const input = ['node.exe', 'index.js', 'foo', '123456789', '-c', '-a'];
+
+        const args = parser(input)
+            .command(/[a-z]+/)
+            .command(/[0-9]+/)
+            .flag('a')
+            .get()
+        ;
+
+        it('should get both dynamic variable names', () => {
+            expect(args).to.deep.equal({foo: true, 123456789: true, a: true});
+        });
+    });
 });
 
