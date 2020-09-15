@@ -10,6 +10,13 @@ $ npm i micro-ap
 ```
 
 # About
+[![npm version][npm-src]][npm-href]
+[![types][types-src]][types-href]
+[![size][size-src]][size-href]
+[![Dependencies][dep-src]][dep-href]
+[![devDependencies][devDep-src]][devDep-href]
+[![License][license-src]][license-href]
+
 micro-a is a small and opinionated argument parser library without any additional dependencies.
 
 # Functions
@@ -49,3 +56,16 @@ parser(process.argv)
     .get() // returns {"install": "test", "verbose": true, "output": "console", "file": ["one.js", "two.js", "three.js", "four.js"]}
 ;
 ```
+
+[npm-src]: https://badgen.net/npm/v/micro-ap
+[npm-href]: https://www.npmjs.com/package/micro-ap
+[size-src]: https://badgen.net/packagephobia/install/micro-ap
+[size-href]: https://badgen.net/packagephobia/install/micro-ap
+[types-src]: https://badgen.net/npm/types/micro-ap
+[types-href]: https://badgen.net/npm/types/micro-ap
+[dep-src]: https://badgen.net/david/dep/sovrin/micro-ap
+[dep-href]: https://badgen.net/david/dep/sovrin/micro-ap
+[devDep-src]: https://badgen.net/david/dev/sovrin/micro-ap
+[devDep-href]: https://badgen.net/david/dev/sovrin/micro-ap
+[license-src]: https://badgen.net/github/license/sovrin/micro-ap
+[license-href]: LICENSE
