@@ -1,3 +1,5 @@
+import {Alias, Command, Parser, Flag, Parsed, Factory} from "./types/Parser";
+
 const DELIMITER = '-';
 const NOT_WITH_DELIMITER = `^(?!${DELIMITER}).`;
 
@@ -5,11 +7,10 @@ const NOT_WITH_DELIMITER = `^(?!${DELIMITER}).`;
  *
  * @param args
  * @param truncate
- * @returns {{flag: (function(*=, *=)), get: (function()), command: (function(*=))}}
  */
-const factory = (args, truncate = true) => {
-    const parsed = {};
-    const aliases = {};
+const factory: Factory = (args, truncate = true): Parser => {
+    const parsed: Parsed = {};
+    const aliases: Alias = {};
 
     // clone args
     args = [...args];
@@ -24,18 +25,14 @@ const factory = (args, truncate = true) => {
      * @param key
      * @param value
      */
-    const set = (key, value) => {
+    const set = (key: string, value: any) => {
         key = aliases[key] || key;
 
         if (parsed[key]) {
             if (value === false || value === true) {
                 // do nothing
             } else if (Array.isArray(parsed[key])) {
-                if (Array.isArray(value)) {
-                    parsed[key].push(...value)
-                } else {
-                    parsed[key].push(value)
-                }
+                parsed[key].push(value)
             } else {
                 parsed[key] = [parsed[key], value];
             }
@@ -48,10 +45,9 @@ const factory = (args, truncate = true) => {
      *
      * @param prefix
      * @param name
-     * @param deflt
-     * @returns {{flag: (function(*=, *=)), get: (function()), command: (function(*=))}}
+     * @param fallback
      */
-    const extract = (prefix = '', name, deflt = false) => {
+    const extract = (prefix: string, name, fallback: number | string | boolean = false) => {
         let key;
         let index;
 
@@ -63,6 +59,7 @@ const factory = (args, truncate = true) => {
             if (!match) {
                 return context;
             }
+
             args.splice(0, 1);
 
             const [value] = match;
@@ -74,7 +71,7 @@ const factory = (args, truncate = true) => {
 
         // no flag found
         if (index === -1) {
-            set(name, deflt);
+            set(name, fallback);
 
             return context;
         }
@@ -103,7 +100,9 @@ const factory = (args, truncate = true) => {
 
         if (extracted.length === 1) {
             value = extracted.shift();
-        } else if (extracted.length > 1) {
+        }
+
+        if (extracted.length > 1) {
             value = extracted;
         }
 
@@ -118,50 +117,51 @@ const factory = (args, truncate = true) => {
     /**
      *
      * @param name
-     * @param deflt
-     * @returns {{flag: (function(*, *=)), get: (function()), command: (function(*=))}}
+     * @param fallback
      */
-    const command = (name, deflt = false) => {
-        extract('', name, deflt);
+    const command: Command = (name, fallback = null) => {
+        extract('', name, fallback);
 
-        return context;
+        return context();
     };
 
     /**
      *
      * @param flag
      * @param alias
-     * @param deflt
-     * @returns {{flag: (function(*=, *=)), get: (function()), command: (function(*=))}}
+     * @param fallback
      */
-    const flag = (flag, alias, deflt = false) => {
+    const flag: Flag = (flag, alias, fallback = false) => {
         aliases[flag] = alias;
 
         extract(DELIMITER + DELIMITER, flag);
-        extract(DELIMITER, flag, deflt);
+        extract(DELIMITER, flag, fallback);
 
-        return context;
+        return context();
     };
 
     /**
      *
      */
-    const get = () => parsed;
+    const get = () => (
+        parsed
+    );
 
-    const context = {
+    /**
+     *
+     */
+    const context = (): Parser => ({
         flag,
         command,
-        get,
-    };
-
-    return context;
+        get
+    }
+)
+    return context();
 };
 
 /**
  * User: Oleg Kamlowski <oleg.kamlowski@thomann.de>
  * Date: 18.03.2019
  * Time: 23:09
- *
- * @type {function(*=): {flag: (function(*=, *, *=)), get: (function()), command: (function(*=, *=))}}
  */
-module.exports = factory;
+export default factory;

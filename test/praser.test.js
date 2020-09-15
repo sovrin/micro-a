@@ -1,4 +1,4 @@
-const parser = require('../lib/parser');
+const {default: parser} = require('../');
 const {expect} = require('chai');
 
 describe('micro-a', () => {
@@ -304,6 +304,20 @@ describe('micro-a', () => {
 
         it('should get both dynamic variable names', () => {
             expect(args).to.deep.equal({foo: true, 123456789: true, a: true});
+        });
+    });
+
+    describe('command add irrelevant regexp', () => {
+        const input = ['node.exe', 'index.js', '123456789', '-c', '-a'];
+
+        const args = parser(input)
+            .command(/[a-z]+/)
+            .flag('a')
+            .get()
+        ;
+
+        it('should get both dynamic variable names', () => {
+            expect(args).to.deep.equal({a: true});
         });
     });
 });

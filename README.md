@@ -13,16 +13,16 @@ $ npm i micro-ap
 micro-a is a small and opinionated argument parser library without any additional dependencies.
 
 # Functions
-## flag(flag, name, deflt = false)
+## flag(flag, name, fallback = false)
 Extract flag arguments
 * `flag` (string); one char as flag e.g. `-f`
 * `name` (string); full name of a flag e.g. `--file`
-* `deflt` (string); default value
+* `fallback` (string); default value
 
-## command(name, deflt = false)
+## command(name, fallback = false)
 Extract command arguments
 * `name` (string); name of the command e.g. `install`
-* `deflt` (string); default value
+* `fallback` (string); default value
 
 ## get()
 Returns the parsed arguments as an object
