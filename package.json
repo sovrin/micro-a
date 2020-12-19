@@ -1,17 +1,16 @@
 {
   "name": "micro-ap",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "tiny arg parser",
   "main": "index.js",
   "types": "./dist/parser.d.ts",
   "scripts": {
     "build": "tsc --project tsconfig.prod.json",
     "watch": "tsc --watch",
-    "test": "mocha test --recursive",
+    "test": "mocha --full-trace 'test/**/*.js'",
     "test:watch": "mocha test --watch --recursive",
-    "coverage": "nyc npm run test",
-    "prepare": "npm run build && npm run test"
-  },
+    "prepare": "npm run build && npm run test",
+    "coverage": "nyc npm test"
   },
   "author": {
     "name": "Oleg Kamlowski",
@@ -28,8 +27,7 @@
     "url": "https://github.com/sovrin/micro-ap.git"
   },
   "keywords": [
-    "micro",
-    "router"
+    "arg parser"
   ],
   "devDependencies": {
     "@types/node": "^14.14.14",
