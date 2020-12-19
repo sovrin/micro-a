@@ -1,5 +1,5 @@
-const {default: parser} = require('../');
-const {expect} = require('chai');
+import parser from "../src/parser";
+import {expect} from "chai";
 
 describe('micro-a', () => {
 
