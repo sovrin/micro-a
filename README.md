@@ -13,6 +13,7 @@ $ npm i micro-ap
 [![npm version][npm-src]][npm-href]
 [![types][types-src]][types-href]
 [![size][size-src]][size-href]
+[![coverage][coverage-src]][coverage-href]
 [![Dependencies][dep-src]][dep-href]
 [![devDependencies][devDep-src]][devDep-href]
 [![License][license-src]][license-href]
@@ -63,6 +64,8 @@ parser(process.argv)
 [size-href]: https://badgen.net/packagephobia/install/micro-ap
 [types-src]: https://badgen.net/npm/types/micro-ap
 [types-href]: https://badgen.net/npm/types/micro-ap
+[coverage-src]: https://coveralls.io/repos/github/sovrin/micro-ap/badge.svg?branch=master
+[coverage-href]: https://coveralls.io/github/sovrin/micro-ap?branch=master
 [dep-src]: https://badgen.net/david/dep/sovrin/micro-ap
 [dep-href]: https://badgen.net/david/dep/sovrin/micro-ap
 [devDep-src]: https://badgen.net/david/dev/sovrin/micro-ap
