@@ -16,7 +16,6 @@ jobs:
         with:
           node-version: 12.x
       - run: npm i
-      - run: npm run build
       - run: npm run coverage
 
       - name: publish coverage

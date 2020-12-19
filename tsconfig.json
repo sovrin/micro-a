@@ -9,12 +9,12 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./src",
-    "declaration": true,
-    "composite": true,
-    "declarationMap": true,
-    "rootDir": "./src/",
-    "lib": [
-      "es2019"
-    ]
-  }
+    "declaration": true
+  },
+  "exclude": [
+    "test/**"
+  ],
+  "include": [
+    "src/**/*"
+  ]
 }
