@@ -1,6 +1,14 @@
 <h1 align="left">micro-ap</h1>
 
-tiny arg parser
+[![npm version][npm-src]][npm-href]
+[![types][types-src]][types-href]
+[![size][size-src]][size-href]
+[![coverage][coverage-src]][coverage-href]
+[![Dependencies][dep-src]][dep-href]
+[![devDependencies][devDep-src]][devDep-href]
+[![License][license-src]][license-href]
+
+> tiny arg parser
 
 ***
 # Installation
@@ -10,14 +18,6 @@ $ npm i micro-ap
 ```
 
 # About
-[![npm version][npm-src]][npm-href]
-[![types][types-src]][types-href]
-[![size][size-src]][size-href]
-[![coverage][coverage-src]][coverage-href]
-[![Dependencies][dep-src]][dep-href]
-[![devDependencies][devDep-src]][devDep-href]
-[![License][license-src]][license-href]
-
 micro-a is a small and opinionated argument parser library without any additional dependencies.
 
 # Functions
@@ -57,6 +57,9 @@ parser(process.argv)
     .get() // returns {"install": "test", "verbose": true, "output": "console", "file": ["one.js", "two.js", "three.js", "four.js"]}
 ;
 ```
+ 
+## Licence
+MIT License, see [LICENSE](./LICENSE)
 
 [npm-src]: https://badgen.net/npm/v/micro-ap
 [npm-href]: https://www.npmjs.com/package/micro-ap
