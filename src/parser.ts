@@ -25,7 +25,7 @@ const factory: Factory = (args, truncate = true): Parser => {
      * @param key
      * @param value
      */
-    const set = (key: string, value: any) => {
+    const set = (key: string, value: any): void => {
         key = aliases[key] || key;
 
         if (parsed[key]) {
@@ -47,7 +47,7 @@ const factory: Factory = (args, truncate = true): Parser => {
      * @param name
      * @param fallback
      */
-    const extract = (prefix: string, name, fallback: number | string | boolean = false) => {
+    const extract = (prefix: string, name: string | RegExp, fallback: number | string | boolean = false) => {
         let key;
         let index;
 
@@ -76,8 +76,7 @@ const factory: Factory = (args, truncate = true): Parser => {
             return context;
         }
 
-        const indexes = args
-            .map((_, i) => i)
+        const indexes = args.map((_, i) => i)
             .filter((i) => i > (index))
             .filter((i) => args
                 .slice(index + 1, i + 1)
@@ -119,7 +118,7 @@ const factory: Factory = (args, truncate = true): Parser => {
      * @param name
      * @param fallback
      */
-    const command: Command = (name, fallback = null) => {
+    const command: Command = (name, fallback = null): Parser => {
         extract('', name, fallback);
 
         return context();
@@ -131,7 +130,7 @@ const factory: Factory = (args, truncate = true): Parser => {
      * @param alias
      * @param fallback
      */
-    const flag: Flag = (flag, alias, fallback = false) => {
+    const flag: Flag = (flag, alias, fallback = false): Parser => {
         aliases[flag] = alias;
 
         extract(DELIMITER + DELIMITER, flag);
@@ -143,7 +142,7 @@ const factory: Factory = (args, truncate = true): Parser => {
     /**
      *
      */
-    const get = () => (
+    const get = (): Parsed => (
         parsed
     );
 

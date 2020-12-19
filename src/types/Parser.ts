@@ -1,16 +1,12 @@
-export type Factory = (args: Array<string>, truncate: boolean) => Parser;
+export type Factory = (args: Array<string>, truncate?: boolean) => Parser;
 
-export type Parsed = {
-    [key in string]: Array<string>;
-};
+export type Parsed = Record<string, Array<string>>;
 
-export type Alias = {
-    [key in string]: string;
-}
+export type Alias = Record<string, string>;
 
-export type Flag = (flag: string, alias: string, fallback: boolean) => Parser;
+export type Flag = (flag: string, alias?: string, fallback?: string | number | boolean) => Parser;
 
-export type Command = (name: string, fallback: number | string) => Parser
+export type Command = (name: string | RegExp, fallback?: number | string) => Parser
 
 export type Get = () => Parsed;
 
