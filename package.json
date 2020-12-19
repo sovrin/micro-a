@@ -9,7 +9,6 @@
     "watch": "tsc --watch",
     "test": "mocha --full-trace 'test/**/*.js'",
     "test:watch": "mocha test --watch --recursive",
-    "prepare": "npm run build && npm run test",
     "coverage": "nyc npm test"
   },
   "author": {
