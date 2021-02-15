@@ -1,6 +1,6 @@
 {
   "name": "micro-ap",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "tiny arg parser",
   "main": "index.js",
   "types": "./dist/parser.d.ts",
