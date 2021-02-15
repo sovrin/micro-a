@@ -53,6 +53,11 @@ const factory: Factory = (args, truncate = true): Parser => {
 
         if (name instanceof RegExp) {
             const first = args.slice(0, 1);
+
+            if (first.length === 0) {
+                return context;
+            }
+
             const regExp = new RegExp(NOT_WITH_DELIMITER + name.source);
             const match = first.pop().match(regExp);
 

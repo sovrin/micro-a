@@ -320,5 +320,18 @@ describe('micro-a', () => {
             expect(args).to.deep.equal({a: true});
         });
     });
+
+    describe('command regexp but no args', () => {
+        const input = ['node.exe', 'index.js'];
+
+        const args = parser(input)
+            .command(/[a-z]+/)
+            .get()
+        ;
+
+        it('should be empty', () => {
+            expect(args).to.deep.equal({});
+        });
+    });
 });
 
